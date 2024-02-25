@@ -17,8 +17,7 @@ app.use(express.static('public'))
 
 // MONGOOSE Connection
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, {
-useNewURLParser: true })
+mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection
 
 //MongoDB Config
