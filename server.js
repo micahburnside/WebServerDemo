@@ -1,7 +1,5 @@
-//Checks for Development or Production Environment
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
-}
+require('./config'); // This will execute the code in config.js
+
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
@@ -18,9 +16,9 @@ app.use(express.static('public'))
 // MONGOOSE Connection
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL)
-const db = mongoose.connection
 
 //MongoDB Config
+const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))    
 
